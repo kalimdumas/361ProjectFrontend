@@ -1,0 +1,17 @@
+{
+  "productId":1,
+  "name":"Nike Sportswear Swoosh",
+  "price":30,
+  "type":"[M]",
+  "clothingType":"[shirt]" ,
+  "sizes":"[S,M,L]",
+  "image": "https://static.nike.com/a/images/t_PDP_864_v1/f_auto,b_rgb:f5f5f5/948af7ba-ad82-47fa-a706-b19d3813dfa5/sportswear-swoosh-mens-t-shirt-LzncrX.png",
+  "manufacturer":"Nike",
+  "numStars":4.6,
+  "description":"Big and bold, the Nike Sportswear T-Shirt offers soft cotton construction and a prominent graphic at the chest." ,
+  "sku":"DC5094-063",
+  "height":0,
+  "length":0,
+  "width":0, 
+  "weight":0
+    }
