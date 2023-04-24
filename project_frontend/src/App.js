@@ -1,5 +1,5 @@
 import React from 'react'
-import { BrowserRouter as Router, Route, BrowserRouter } from 'react-router-dom'
+import {  Routes, Route, BrowserRouter } from 'react-router-dom'
 
 import './App.css'
 import Necklaces from './views/necklaces'
@@ -27,7 +27,8 @@ import WomenJackets from './views/women-jackets'
 
 const App = () => {
   return (
-      <Router>
+    <BrowserRouter>
+      <Routes>
           <Route component={Necklaces} exact path="/necklaces" />
           <Route component={Backpacks} exact path="/backpacks" />
           <Route component={KidsShorts} exact path="/kids-shorts" />
@@ -50,7 +51,8 @@ const App = () => {
           <Route component={Checkout} exact path="/checkout" />
           <Route component={Hats} exact path="/hats" />
           <Route component={WomenJackets} exact path="/women-jackets" />
-      </Router>
+      </Routes>
+    </BrowserRouter>
   )
 }
 
