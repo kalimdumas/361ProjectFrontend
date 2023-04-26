@@ -1,36 +1,22 @@
-import React, { useState } from 'react'
-import Navbar from '../components/Navbar';
+import React from 'react'
 
 import { Helmet } from 'react-helmet'
 
+import Header from '../components/header'
 import FeatureCard1 from '../components/feature-card1'
 import './home-page.css'
 
 const HomePage = (props) => {
-
-  const [products, setProducts] = useState([]);
-
-  function handleClick(){
-    var requestOptions = {
-      method: 'GET',
-      redirect: 'follow'
-    };
-    
-    fetch("http://localhost:5257/mens-shirts", requestOptions)
-      .then(response => response.json())
-      .then(result => setProducts(result))
-      .catch(error => console.log('error', error));
-  }
   return (
     <div className="home-page-container">
       <Helmet>
         <title>361 Project</title>
         <meta property="og:title" content="361 Project" />
       </Helmet>
-      <Navbar/>
-      <div className="home-page-container3">
-        <div className="home-page-container4">
-          <h1 className="home-page-text30">
+      <Header rootClassName="header-root-class-name19"></Header>
+      <div className="home-page-container1">
+        <div className="home-page-container2">
+          <h1 className="home-page-text">
             <span>
               <span>
                 Explore our new apparel store built for Nebraskans,
@@ -61,26 +47,25 @@ const HomePage = (props) => {
         <img
           alt="image"
           src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e5/Nebraska_Cornhuskers_logo.svg/1024px-Nebraska_Cornhuskers_logo.svg.png"
-          className="home-page-image2"
+          className="home-page-image"
         />
         <img
           alt="image"
           src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e5/Nebraska_Cornhuskers_logo.svg/1024px-Nebraska_Cornhuskers_logo.svg.png"
-          className="home-page-image3"
+          className="home-page-image1"
         />
         <img
           alt="image"
           src="https://drive.google.com/uc?id=15V6U7_K-5f2oqukX5_t0JmwEXx7r1CpZ"
-          className="home-page-image4"
+          className="home-page-image2"
         />
       </div>
       <div id="FrontProducts" className="home-page-features">
-        <h1 className="home-page-text36">
+        <h1 className="home-page-text6">
           <span>New Arrivals</span>
           <br></br>
         </h1>
-        <button onClick={handleClick}>getMensShirts</button>
-        <div className="home-page-container5">
+        <div className="home-page-container3">
           <FeatureCard1 rootClassName="rootClassName"></FeatureCard1>
           <FeatureCard1 rootClassName="rootClassName1"></FeatureCard1>
           <FeatureCard1 rootClassName="rootClassName2"></FeatureCard1>

@@ -4,7 +4,7 @@ import "../views/home-page.css";
 
 export default function Navbar(){
     return(
-        <><header data-role="Header" className="home-page-header">
+        <>    <header data-role="Header" className="home-page-header">
         <Link to="/" className="home-page-navlink">
           <img
             alt="logo"
@@ -366,7 +366,9 @@ export default function Navbar(){
         <Link to="/login-page" className="home-page-login button">
           Login
         </Link>
-        <button className="home-page-register button">Register</button>
+        <Link to="/register" className="home-page-register button">
+          Register
+        </Link>
         <Link to="/cart-page" className="home-page-navlink18">
           <svg viewBox="0 0 1024 1024" className="home-page-icon08">
             <path d="M726 768q34 0 59 26t25 60-25 59-59 25-60-25-26-59 26-60 60-26zM42 86h140l40 84h632q18 0 30 13t12 31q0 2-6 20l-152 276q-24 44-74 44h-318l-38 70-2 6q0 10 10 10h494v86h-512q-34 0-59-26t-25-60q0-20 10-40l58-106-154-324h-86v-84zM298 768q34 0 60 26t26 60-26 59-60 25-59-25-25-59 25-60 59-26z"></path>
