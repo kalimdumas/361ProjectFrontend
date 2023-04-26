@@ -29,28 +29,28 @@ const App = () => {
   return (
     <BrowserRouter>
       <Routes>
-          <Route component={Necklaces} exact path="/necklaces" />
-          <Route component={Backpacks} exact path="/backpacks" />
-          <Route component={KidsShorts} exact path="/kids-shorts" />
-          <Route component={KidsPants} exact path="/kids-pants" />
-          <Route component={Sales} exact path="/sales" />
-          <Route component={WomenShorts} exact path="/women-shorts" />
-          <Route component={MenShirts} exact path="/men-shirts" />
-          <Route component={CartPage} exact path="/cart-page" />
-          <Route component={MenJackets} exact path="/men-jackets" />
-          <Route component={WomenPants} exact path="/women-pants" />
-          <Route component={LoginPage} exact path="/login-page" />
-          <Route component={Register} exact path="/register" />
-          <Route component={KidsJackets} exact path="/kids-jackets" />
-          <Route component={MenShorts} exact path="/men-shorts" />
-          <Route component={Watches} exact path="/watches" />
-          <Route component={WomenShirts} exact path="/women-shirts" />
-          <Route component={HomePage} exact path="/" />
-          <Route component={MenPants} exact path="/men-pants" />
-          <Route component={KidsShirts} exact path="/kids-shirts" />
-          <Route component={Checkout} exact path="/checkout" />
-          <Route component={Hats} exact path="/hats" />
-          <Route component={WomenJackets} exact path="/women-jackets" />
+          <Route element={<Necklaces/>} exact path="/necklaces" />
+          <Route element={<Backpacks/>} exact path="/backpacks" />
+          <Route element={<KidsShorts/>} exact path="/kids-shorts" />
+          <Route element={<KidsPants/>} exact path="/kids-pants" />
+          <Route element={<Sales/>} exact path="/sales" />
+          <Route element={<WomenShorts/>} exact path="/women-shorts" />
+          <Route element={<MenShirts/>} exact path="/men-shirts" />
+          <Route element={<CartPage/>} exact path="/cart-page" />
+          <Route element={<MenJackets/>} exact path="/men-jackets" />
+          <Route element={<WomenPants/>} exact path="/women-pants" />
+          <Route element={<LoginPage/>} exact path="/login-page" />
+          <Route element={<Register/>} exact path="/register" />
+          <Route element={<KidsJackets/>} exact path="/kids-jackets" />
+          <Route element={<MenShorts/>} exact path="/men-shorts" />
+          <Route element={<Watches/>} exact path="/watches" />
+          <Route element={<WomenShirts/>} exact path="/women-shirts" />
+          <Route element={<HomePage/>} exact path="/" />
+          <Route element={<MenPants/>} exact path="/men-pants" />
+          <Route element={<KidsShirts/>} exact path="/kids-shirts" />
+          <Route element={<Checkout/>} exact path="/checkout" />
+          <Route element={<Hats/>} exact path="/hats" />
+          <Route element={<WomenJackets/>} exact path="/women-jackets" />
       </Routes>
     </BrowserRouter>
   )

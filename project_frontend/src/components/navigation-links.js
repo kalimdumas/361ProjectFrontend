@@ -34,4 +34,4 @@ NavigationLinks.propTypes = {
   text4: PropTypes.string,
 }
 
-export default NavigationLinks
+export default NavigationLinks;
