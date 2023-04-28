@@ -11,4 +11,5 @@
 4. In database projects, run Tables.sql and Batch.sql
 5. Delete the obj file, in the Backend folder. 
 6. In terminal, cd to backend and run command "dotnet run"
-7. In the frontend, cd to the src folder. Run npm install.
+7. In the frontend, cd to the src folder. Run npm install. Update npm if prompted
+
