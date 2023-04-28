@@ -1,5 +1,8 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import { Box, Card, CardMedia, CardActions, CardContent, Typography, IconButton } from '@mui/material';
+import DeleteIcon from '@mui/icons-material/Delete';
+import { useState, useEffect } from 'react';
 
 import { Helmet } from 'react-helmet'
 
@@ -7,54 +10,54 @@ import Header from '../components/header'
 import './cart-page.css'
 
 const CartPage = (props) => {
+  const [products, setProducts] = useState([]);
+  const productHandler = (products) => setProducts(products);
+  useEffect(() => {
+    var requestOptions = {
+      method: 'GET',
+      redirect: 'follow'
+    };
+
+    fetch("http://localhost:5257/womens-pants", requestOptions)
+      .then(response => response.json())
+      .then(response => productHandler(response))
+      .catch(error => console.log('error', error))
+  }, [])
   return (
     <div className="cart-page-container">
       <Helmet>
         <title>Cart-Page - 361 Project</title>
         <meta property="og:title" content="Cart-Page - 361 Project" />
       </Helmet>
-      <div data-thq="thq-dropdown" className="cart-page-thq-dropdown list-item">
-        <ul data-thq="thq-dropdown-list" className="cart-page-dropdown-list">
-          <li data-thq="thq-dropdown" className="cart-page-dropdown list-item">
-            <div
-              data-thq="thq-dropdown-toggle"
-              className="cart-page-dropdown-toggle"
-            >
-              <span className="cart-page-text">Sub-menu Item</span>
-            </div>
-          </li>
-          <li data-thq="thq-dropdown" className="cart-page-dropdown1 list-item">
-            <div
-              data-thq="thq-dropdown-toggle"
-              className="cart-page-dropdown-toggle1"
-            >
-              <span className="cart-page-text01">Sub-menu Item</span>
-            </div>
-          </li>
-          <li data-thq="thq-dropdown" className="cart-page-dropdown2 list-item">
-            <div
-              data-thq="thq-dropdown-toggle"
-              className="cart-page-dropdown-toggle2"
-            >
-              <span className="cart-page-text02">Sub-menu Item</span>
-            </div>
-          </li>
-          <li data-thq="thq-dropdown" className="cart-page-dropdown3 list-item">
-            <div
-              data-thq="thq-dropdown-toggle"
-              className="cart-page-dropdown-toggle3"
-            >
-              <span className="cart-page-text03">Sub-menu Item</span>
-            </div>
-          </li>
-        </ul>
-      </div>
       <Header rootClassName="header-root-class-name22"></Header>
       <span className="cart-page-text04">Your Cart</span>
       <div className="cart-page-container1">
         <div className="cart-page-container2">
           <span>Products:</span>
-          <div className="cart-page-container3"></div>
+          <div className="cart-page-container3">
+            {products.map((product, index) => (
+              <Card sx={{ width: 500 }}>
+                <Box sx={{ display: 'flex', flexDirection: 'column' }}>
+                  <CardContent sx={{ flex: '1 0 auto' }}>
+                    <Typography gutterBottom variant="h5" component="div">
+                      {product.name}
+                    </Typography>
+                    <Typography variant="h6" color="text.secondary" sx={{ fontWeight: '700', justifyContent: "space-between" }}>
+                      ${product.price}
+                      <IconButton>
+                        <DeleteIcon />
+                      </IconButton>
+                    </Typography>
+                  </CardContent>
+                </Box>
+                <CardMedia
+                  sx={{ height: 300 }}
+                  image={product.image}
+                  title={product.name}
+                />
+              </Card>
+            ))}
+          </div>
         </div>
         <div className="cart-page-container4">
           <div className="cart-page-container5">

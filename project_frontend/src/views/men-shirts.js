@@ -1,5 +1,5 @@
 import { Helmet } from 'react-helmet'
-import { Box, Card, CardMedia, CardActions, CardContent,Typography, Button, Rating, IconButton, Grid } from '@mui/material';
+import { Box, Card, CardMedia, CardActions, CardContent,Typography, Rating, IconButton, Grid } from '@mui/material';
 import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
 import { useState, useEffect } from 'react';
 
@@ -19,7 +19,6 @@ const MenShirts = (props) => {
       .then(response => response.json())
       .then(response => productHandler(response))
       .catch(error => console.log('error', error))
-      .finally(() => console.log(products));
   },[])
   function handleClick(event) {
     console.log(event.currentTarget);
