@@ -9,4 +9,6 @@
 2.2 If you're running on Windows, make sure to change line endings for all the .sh files from CRLF to LF.
 3. Go to the left of VS Code, click on SQL Server and try to establish a connection. Input the password.
 4. In database projects, run Tables.sql and Batch.sql
-5. In terminal, cd to 
+5. Delete the obj file, in the Backend folder. 
+6. In terminal, cd to backend and run command "dotnet run"
+7. In the frontend, cd to the src folder. Run npm install.
