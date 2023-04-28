@@ -12,4 +12,5 @@
 5. Delete the obj file, in the Backend folder. 
 6. In terminal, cd to backend and run command "dotnet run"
 7. In the frontend, cd to the src folder. Run npm install. Update npm if prompted
+8. Run npm start
 
