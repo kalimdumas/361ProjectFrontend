@@ -14,7 +14,7 @@ const WomenShorts = (props) => {
       method: 'GET',
       redirect: 'follow'
     };
-    fetch("http://localhost:5257/women-shorts", requestOptions)
+    fetch("http://localhost:5257/womens-shorts", requestOptions)
       .then(response => response.json())
       .then(response => productHandler(response))
       .catch(error => console.log('error', error))
@@ -29,7 +29,7 @@ const WomenShorts = (props) => {
         <meta property="og:title" content="Women-Shorts - 361 Project" />
       </Helmet>
       <Header rootClassName="header-root-class-name17"></Header>
-      <h1 className="women-shorts-text">Women Shorts</h1>
+      <h1 className="women-shorts-text">Women&apos;s Shorts</h1>
       <Grid container spacing={2}>
         {products.map((product, index) => (
           <Grid item>

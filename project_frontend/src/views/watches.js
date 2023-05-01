@@ -1,10 +1,10 @@
 import { Helmet } from 'react-helmet'
-import { Box, Card, CardMedia, CardActions, CardContent,Typography, Rating, IconButton, Grid } from '@mui/material';
+import { Box, Card, CardMedia, CardActions, CardContent, Typography, Rating, IconButton, Grid } from '@mui/material';
 import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
 import { useState, useEffect } from 'react';
 
 import Header from '../components/header'
-import './women-pants.css'
+import './watches.css'
 
 const Watches = (props) => {
   const [products, setProducts] = useState([]);
@@ -14,12 +14,11 @@ const Watches = (props) => {
       method: 'GET',
       redirect: 'follow'
     };
-    
     fetch("http://localhost:5257/watches", requestOptions)
       .then(response => response.json())
       .then(response => productHandler(response))
       .catch(error => console.log('error', error))
-  },[])
+  }, [])
   function handleClick(event) {
     console.log(event.currentTarget);
   }
@@ -29,19 +28,21 @@ const Watches = (props) => {
         <title>Watches - 361 Project</title>
         <meta property="og:title" content="Watches - 361 Project" />
       </Helmet>
-      <Header rootClassName="header-root-class-name11"></Header>
-      <h1 className="Watches-text">Watches</h1>
-
+      <Header rootClassName="header-root-class-name9"></Header>
+      <h1 className="watches-text">
+        <span>Watches</span>
+        <br></br>
+      </h1>
       <Grid container spacing={2}>
         {products.map((product, index) => (
           <Grid item>
-            <Card sx={{ maxWidth: 345}}>
+            <Card sx={{ maxWidth: 345 }}>
               <CardMedia
-                sx={{ height: 300 }}
+                sx={{ height: 500 }}
                 image={product.image}
                 title={product.name}
               />
-              <CardContent sx={{height: 150, overflowY: 'scroll'}}>
+              <CardContent sx={{ height: 150, overflowY: 'scroll' }}>
                 <Typography gutterBottom variant="h5" component="div">
                   {product.name}
                 </Typography>

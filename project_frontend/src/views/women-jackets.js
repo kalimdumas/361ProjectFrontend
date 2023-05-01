@@ -14,7 +14,7 @@ const WomenJackets = (props) => {
       method: 'GET',
       redirect: 'follow'
     };
-    fetch("http://localhost:5257/women-jackets", requestOptions)
+    fetch("http://localhost:5257/womens-jackets", requestOptions)
       .then(response => response.json())
       .then(response => productHandler(response))
       .catch(error => console.log('error', error))
@@ -28,17 +28,14 @@ const WomenJackets = (props) => {
         <title>Women-Jackets - 361 Project</title>
         <meta property="og:title" content="Women-Jackets - 361 Project" />
       </Helmet>
-      <Header rootClassName="header-root-class-name18"></Header>
-      <h1 className="Women-jackets-text">
-        <span>Women Jackets &amp; Hoodies</span>
-        <br></br>
-      </h1>
+      <Header rootClassName="header-root-class-name17"></Header>
+      <h1 className="women-jackets-text">Women&apos;s Jackets</h1>
       <Grid container spacing={2}>
         {products.map((product, index) => (
           <Grid item>
             <Card sx={{ maxWidth: 345 }}>
               <CardMedia
-                sx={{ height: 500 }}
+                sx={{ height: 500 }}  
                 image={product.image}
                 title={product.name}
               />
