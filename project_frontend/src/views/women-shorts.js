@@ -14,7 +14,7 @@ const WomenShorts = (props) => {
       method: 'GET',
       redirect: 'follow'
     };
-    fetch("http://localhost:5257/women-shorts", requestOptions)
+    fetch("http://localhost:5257/womens-shorts", requestOptions)
       .then(response => response.json())
       .then(response => productHandler(response))
       .catch(error => console.log('error', error))
