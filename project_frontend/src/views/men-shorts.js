@@ -32,7 +32,7 @@ const MenShorts = (props) => {
       </Helmet>
       <Header rootClassName="header-root-class-name10"></Header>
       <h1 className="men-shorts-text">
-        <span>Men&apos;s Short</span>
+        <span>Men&apos;s Shorts</span>
         <br></br>
       </h1>
       <Grid container spacing={2}>
