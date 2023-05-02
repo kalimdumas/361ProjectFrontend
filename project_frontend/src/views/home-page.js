@@ -4,7 +4,6 @@ import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
 import { useState, useEffect } from 'react';
 
 import Header from '../components/header'
-import FeatureCard1 from '../components/feature-card1'
 import './home-page.css'
 
 const HomePage = (props) => {
