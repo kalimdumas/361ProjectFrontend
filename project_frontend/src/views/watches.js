@@ -28,7 +28,6 @@ const Watches = (props) => {
         <title>Watches - 361 Project</title>
         <meta property="og:title" content="Watches - 361 Project" />
       </Helmet>
-      <Header rootClassName="header-root-class-name9"></Header>
       <h1 className="watches-text">
         <span>Watches</span>
         <br></br>

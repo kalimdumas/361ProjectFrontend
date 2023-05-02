@@ -12,7 +12,6 @@ const Checkout = (props) => {
         <title>Checkout - 361 Project</title>
         <meta property="og:title" content="Checkout - 361 Project" />
       </Helmet>
-      <Header rootClassName="header-root-class-name21"></Header>
       <h1 className="checkout-text">Checkout Page</h1>
       <div className="checkout-container1">
         <div className="checkout-container2">

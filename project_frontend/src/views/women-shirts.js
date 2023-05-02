@@ -29,7 +29,6 @@ const WomenShirts = (props) => {
         <title>Women-Shirts - 361 Project</title>
         <meta property="og:title" content="Women-Shirts - 361 Project" />
       </Helmet>
-      <Header rootClassName="header-root-class-name11"></Header>
       <h1 className="women-shirts-text">Women&apos;s Shirts</h1>
 
       <Grid container spacing={2}>

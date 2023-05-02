@@ -28,7 +28,6 @@ const KidsJackets = (props) => {
         <title>Kids-Jackets - 361 Project</title>
         <meta property="og:title" content="Kids-Jackets - 361 Project" />
       </Helmet>
-      <Header rootClassName="header-root-class-name18"></Header>
       <h1 className="kids-jackets-text">
         <span>Kid&apos;s Jackets &amp; Hoodies</span>
         <br></br>

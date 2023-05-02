@@ -1,9 +1,8 @@
 import { Helmet } from 'react-helmet'
 import { Box, Card, CardMedia, CardActions, CardContent, Typography, Rating, IconButton, Grid } from '@mui/material';
-import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
+import AddToCartButton from '../components/AddToCartButton';
 import { useState, useEffect } from 'react';
 
-import Header from '../components/header'
 import './backpacks.css'
 
 const Backpacks = (props) => {
@@ -19,23 +18,19 @@ const Backpacks = (props) => {
       .then(response => productHandler(response))
       .catch(error => console.log('error', error))
   }, [])
-  function handleClick(event) {
-    console.log(event.currentTarget);
-  }
   return (
     <div className="backpacks-container">
       <Helmet>
         <title>Backpacks - 361 Project</title>
         <meta property="og:title" content="Backpacks - 361 Project" />
       </Helmet>
-      <Header rootClassName="header-root-class-name9"></Header>
       <h1 className="backpacks-text">
         <span>Backpacks</span>
         <br></br>
       </h1>
       <Grid container spacing={2}>
         {products.map((product, index) => (
-          <Grid item>
+          <Grid item key={index}>
             <Card sx={{ maxWidth: 345 }}>
               <CardMedia
                 sx={{ height: 500 }}
@@ -56,9 +51,7 @@ const Backpacks = (props) => {
                   <Typography variant="h6" color="text.secondary" sx={{ fontWeight: '700' }}>
                     ${product.price}
                   </Typography>
-                  <IconButton onClick={handleClick} color="primary" aria-label="add to shopping cart">
-                    <AddShoppingCartIcon />
-                  </IconButton>
+                  <AddToCartButton addToCart={props.addToCart} product={product} />
                 </Box>
               </CardActions>
             </Card>

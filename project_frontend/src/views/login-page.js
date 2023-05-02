@@ -18,7 +18,6 @@ const LoginPage = (props) => {
       <span className="login-page-text">Username:</span>
       <span className="login-page-text1">Password:</span>
       <div className="login-page-container1"></div>
-      <Header rootClassName="header-root-class-name14"></Header>
       <Link to="/register" className="login-page-navlink button">
         Register
       </Link>

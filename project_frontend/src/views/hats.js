@@ -30,7 +30,6 @@ const Hats = (props) => {
         <title>Hats - 361 Project</title>
         <meta property="og:title" content="Hats - 361 Project" />
       </Helmet>
-      <Header rootClassName="header-root-class-name20"></Header>
       <h1 className="hats-text">
         <span>Hats</span>
         <br></br>

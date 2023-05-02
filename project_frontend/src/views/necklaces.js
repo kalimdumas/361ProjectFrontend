@@ -28,7 +28,6 @@ const Necklaces = (props) => {
         <title>Necklaces - 361 Project</title>
         <meta property="og:title" content="Necklaces - 361 Project" />
       </Helmet>
-      <Header rootClassName="header-root-class-name9"></Header>
       <h1 className="necklaces-text">
         <span>Necklaces</span>
         <br></br>

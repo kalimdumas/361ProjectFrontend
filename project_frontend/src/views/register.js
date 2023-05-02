@@ -26,7 +26,6 @@ const Register = (props) => {
           <br></br>
         </span>
       </button>
-      <Header rootClassName="header-root-class-name8"></Header>
       <h1>Register for an Account </h1>
     </div>
   )

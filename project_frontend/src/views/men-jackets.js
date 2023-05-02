@@ -30,7 +30,6 @@ const MenJackets = (props) => {
         <title>Men-Jackets - 361 Project</title>
         <meta property="og:title" content="Men-Jackets - 361 Project" />
       </Helmet>
-      <Header rootClassName="header-root-class-name13"></Header>
       <h1 className="men-jackets-text">
         <span>Men&apos;s Jackets </span>
         <br></br>

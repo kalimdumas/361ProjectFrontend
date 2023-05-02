@@ -1,42 +1,26 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import { Box, Card, CardMedia, CardActions, CardContent, Typography, IconButton } from '@mui/material';
+import { Box, Card, CardMedia, CardContent, Typography, IconButton } from '@mui/material';
 import DeleteIcon from '@mui/icons-material/Delete';
-import { useState, useEffect } from 'react';
 
 import { Helmet } from 'react-helmet'
 
-import Header from '../components/header'
 import './cart-page.css'
 
 const CartPage = (props) => {
-  const [products, setProducts] = useState([]);
-  const productHandler = (products) => setProducts(products);
-  useEffect(() => {
-    var requestOptions = {
-      method: 'GET',
-      redirect: 'follow'
-    };
-
-    fetch("http://localhost:5257/womens-pants", requestOptions)
-      .then(response => response.json())
-      .then(response => productHandler(response))
-      .catch(error => console.log('error', error))
-  }, [])
+  
   return (
     <div className="cart-page-container">
       <Helmet>
         <title>Cart-Page - 361 Project</title>
         <meta property="og:title" content="Cart-Page - 361 Project" />
       </Helmet>
-      <Header rootClassName="header-root-class-name22"></Header>
       <span className="cart-page-text04">Your Cart</span>
       <div className="cart-page-container1">
         <div className="cart-page-container2">
-          <span>Products:</span>
           <div className="cart-page-container3">
-            {products.map((product, index) => (
-              <Card sx={{ width: 500 }}>
+            {props.products.map((product, index) => (
+              <Card key={index} sx={{ width: 500, display: 'flex', justifyContent:'space-between' }}>
                 <Box sx={{ display: 'flex', flexDirection: 'column' }}>
                   <CardContent sx={{ flex: '1 0 auto' }}>
                     <Typography gutterBottom variant="h5" component="div">
@@ -44,16 +28,16 @@ const CartPage = (props) => {
                     </Typography>
                     <Typography variant="h6" color="text.secondary" sx={{ fontWeight: '700', justifyContent: "space-between" }}>
                       ${product.price}
-                      <IconButton>
+                      <IconButton onClick={props.removeFromCart}>
                         <DeleteIcon />
                       </IconButton>
                     </Typography>
                   </CardContent>
                 </Box>
                 <CardMedia
-                  sx={{ height: 300 }}
+                  component="img"
+                  sx={{ width: 100 }}
                   image={product.image}
-                  title={product.name}
                 />
               </Card>
             ))}

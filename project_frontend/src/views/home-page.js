@@ -4,7 +4,6 @@ import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
 import { useState, useEffect } from 'react';
 
 import Header from '../components/header'
-import FeatureCard1 from '../components/feature-card1'
 import './home-page.css'
 
 const HomePage = (props) => {
@@ -30,7 +29,6 @@ const HomePage = (props) => {
         <title>361 Project</title>
         <meta property="og:title" content="361 Project" />
       </Helmet>
-      <Header rootClassName="header-root-class-name19"></Header>
       <div className="home-page-container1">
         <div className="home-page-container2">
           <h1 className="home-page-text">

@@ -28,7 +28,6 @@ const KidsPants = (props) => {
         <title>Kids-Pants - 361 Project</title>
         <meta property="og:title" content="Kids-Pants - 361 Project" />
       </Helmet>
-      <Header rootClassName="header-root-class-name17"></Header>
       <h1 className="kids-pants-text">Kid&apos;s Pants</h1>
       <Grid container spacing={2}>
         {products.map((product, index) => (
