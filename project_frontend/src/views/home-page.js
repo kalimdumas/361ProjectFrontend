@@ -1,12 +1,29 @@
-import React from 'react'
-
 import { Helmet } from 'react-helmet'
+import { Box, Card, CardMedia, CardActions, CardContent, Typography, Rating, IconButton, Grid } from '@mui/material';
+import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
+import { useState, useEffect } from 'react';
 
 import Header from '../components/header'
 import FeatureCard1 from '../components/feature-card1'
 import './home-page.css'
 
 const HomePage = (props) => {
+  const [products, setProducts] = useState([]);
+  const productHandler = (products) => setProducts(products);
+  useEffect(() => {
+    var requestOptions = {
+      method: 'GET',
+      redirect: 'follow'
+    };
+
+    fetch("http://localhost:5257/home-page", requestOptions)
+      .then(response => response.json())
+      .then(response => productHandler(response))
+      .catch(error => console.log('error', error))
+  }, [])
+  function handleClick(event) {
+    console.log(event.currentTarget);
+  }
   return (
     <div className="home-page-container">
       <Helmet>
@@ -60,7 +77,7 @@ const HomePage = (props) => {
           className="home-page-image2"
         />
       </div>
-      <div id="FrontProducts" className="home-page-features">
+      {/* <div id="FrontProducts" className="home-page-features">
         <h1 className="home-page-text6">
           <span>New Arrivals</span>
           <br></br>
@@ -75,7 +92,41 @@ const HomePage = (props) => {
           <FeatureCard1 rootClassName="rootClassName5"></FeatureCard1>
           <FeatureCard1 rootClassName="rootClassName4"></FeatureCard1>
         </div>
-      </div>
+      </div> */}
+
+      <Grid container spacing={2}>
+        {products.map((product, index) => (
+          <Grid item>
+            <Card sx={{ maxWidth: 345 }}>
+              <CardMedia
+                sx={{ height: 500 }}
+                image={product.image}
+                title={product.name}
+              />
+              <CardContent sx={{ height: 150, overflowY: 'scroll' }}>
+                <Typography gutterBottom variant="h5" component="div">
+                  {product.name}
+                </Typography>
+                <Typography variant="body2" color="text.secondary">
+                  {product.description}
+                </Typography>
+              </CardContent>
+              <CardActions>
+                <Box sx={{ display: "flex", alignItems: 'center', justifyContent: 'space-between', width: '100%' }}>
+                  <Rating name="half-rating-read" defaultValue={product.numStars} precision={0.1} readOnly />
+                  <Typography variant="h6" color="text.secondary" sx={{ fontWeight: '700' }}>
+                    ${product.price}.00
+                  </Typography>
+                  <IconButton onClick={handleClick} color="primary" aria-label="add to shopping cart">
+                    <AddShoppingCartIcon />
+                  </IconButton>
+                </Box>
+              </CardActions>
+            </Card>
+          </Grid>
+        ))}
+      </Grid>
+
     </div>
   )
 }
