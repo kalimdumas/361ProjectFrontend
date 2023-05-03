@@ -20,7 +20,7 @@ const CartPage = (props) => {
         <div className="cart-page-container2">
           <div className="cart-page-container3">
             {props.products.map((product, index) => (
-              <Card key={index} sx={{ width: 500, display: 'flex', justifyContent:'space-between' }}>
+              <Card key={index} sx={{ height: 'flex', width: 500, display: 'flex', justifyContent:'space-between' }}>
                 <Box sx={{ display: 'flex', flexDirection: 'column' }}>
                   <CardContent sx={{ flex: '1 0 auto' }}>
                     <Typography gutterBottom variant="h5" component="div">

@@ -83,12 +83,6 @@ const Header = (props) => {
                 </div>
               </Link>
             </li>
-            <li data-thq="thq-dropdown" className="header-dropdown05 list-item">
-              <div
-                data-thq="thq-dropdown-toggle"
-                className="header-dropdown-toggle05"
-              ></div>
-            </li>
           </ul>
         </div>
       </div>

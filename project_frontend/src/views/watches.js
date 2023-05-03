@@ -1,9 +1,8 @@
 import { Helmet } from 'react-helmet'
 import { Box, Card, CardMedia, CardActions, CardContent, Typography, Rating, IconButton, Grid } from '@mui/material';
-import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
 import { useState, useEffect } from 'react';
+import AddToCartButton from '../components/AddToCartButton';
 
-import Header from '../components/header'
 import './watches.css'
 
 const Watches = (props) => {
@@ -55,9 +54,7 @@ const Watches = (props) => {
                   <Typography variant="h6" color="text.secondary" sx={{ fontWeight: '700' }}>
                     ${product.price}
                   </Typography>
-                  <IconButton onClick={handleClick} color="primary" aria-label="add to shopping cart">
-                    <AddShoppingCartIcon />
-                  </IconButton>
+                  <AddToCartButton addToCart={props.addToCart} product={product} />
                 </Box>
               </CardActions>
             </Card>

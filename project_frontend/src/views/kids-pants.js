@@ -1,9 +1,8 @@
 import { Helmet } from 'react-helmet'
-import { Box, Card, CardMedia, CardActions, CardContent, Typography, Rating, IconButton, Grid } from '@mui/material';
-import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
+import { Box, Card, CardMedia, CardActions, CardContent, Typography, Rating, Grid } from '@mui/material';
 import { useState, useEffect } from 'react';
+import AddToCartButton from '../components/AddToCartButton';
 
-import Header from '../components/header'
 import './kids-pants.css'
 
 const KidsPants = (props) => {
@@ -19,9 +18,6 @@ const KidsPants = (props) => {
       .then(response => productHandler(response))
       .catch(error => console.log('error', error))
   }, [])
-  function handleClick(event) {
-    console.log(event.currentTarget);
-  }
   return (
     <div className="kids-pants-container">
       <Helmet>
@@ -52,9 +48,7 @@ const KidsPants = (props) => {
                   <Typography variant="h6" color="text.secondary" sx={{ fontWeight: '700' }}>
                     ${product.price}
                   </Typography>
-                  <IconButton onClick={handleClick} color="primary" aria-label="add to shopping cart">
-                    <AddShoppingCartIcon />
-                  </IconButton>
+                  <AddToCartButton addToCart={props.addToCart} product={product} />
                 </Box>
               </CardActions>
             </Card>
