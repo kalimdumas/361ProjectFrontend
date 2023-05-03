@@ -92,6 +92,10 @@ const HomePage = (props) => {
         </div>
       </div> */}
 
+        <h1 className="home-page-text6">
+          <span>New Arrivals</span>
+          <br></br>
+        </h1>
       <Grid container spacing={2}>
         {products.map((product, index) => (
           <Grid item>
