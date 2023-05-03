@@ -49,7 +49,7 @@ const Necklaces = (props) => {
                 <Box sx={{ display: "flex", alignItems: 'center', justifyContent: 'space-between', width: '100%' }}>
                   <Rating name="half-rating-read" defaultValue={product.numStars} precision={0.1} readOnly />
                   <Typography variant="h6" color="text.secondary" sx={{ fontWeight: '700' }}>
-                    ${product.price}0
+                  ${product.price.toFixed(2)}
                   </Typography>
                   <AddToCartButton addToCart={props.addToCart} product={product} />
                 </Box>
