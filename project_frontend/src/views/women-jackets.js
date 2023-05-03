@@ -50,7 +50,7 @@ const WomenJackets = (props) => {
                 <Box sx={{ display: "flex", alignItems: 'center', justifyContent: 'space-between', width: '100%' }}>
                   <Rating name="half-rating-read" defaultValue={product.numStars} precision={0.1} readOnly />
                   <Typography variant="h6" color="text.secondary" sx={{ fontWeight: '700' }}>
-                    ${product.price}
+                    ${product.price}.00
                   </Typography>
                   <IconButton onClick={handleClick} color="primary" aria-label="add to shopping cart">
                     <AddShoppingCartIcon />
