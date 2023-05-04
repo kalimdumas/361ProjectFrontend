@@ -17,7 +17,6 @@ const MenJackets = (props) => {
       .then(response => response.json())
       .then(response => productHandler(response))
       .catch(error => console.log('error', error))
-      .finally(() => console.log(products));
   },[])
   return (
     <div className="men-jackets-container">

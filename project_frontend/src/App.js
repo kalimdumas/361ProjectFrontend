@@ -25,7 +25,6 @@ import KidsShirts from './views/Kids-Shirts/Kids-Shirts'
 import Checkout from './views/Checkout/Checkout'
 import Hats from './views/Hats/Hats'
 import WomenJackets from './views/Women-Jackets/Women-Jackets'
-import DisplayProducts from './components/DisplayProducts'
 
 const App = () => {
   const [cart, setCart] = useState([{}]);
