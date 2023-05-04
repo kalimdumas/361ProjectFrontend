@@ -2,8 +2,7 @@ import React from 'react'
 
 import { Helmet } from 'react-helmet'
 
-import Header from '../components/header'
-import './sales.css'
+import './Sales.css'
 
 const Sales = (props) => {
   return (

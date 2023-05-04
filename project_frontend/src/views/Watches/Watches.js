@@ -1,8 +1,8 @@
 import { Helmet } from 'react-helmet'
-import DisplayProducts from '../components/DisplayProducts';
+import DisplayProducts from '../../components/DisplayProducts';
 import { useState, useEffect } from 'react';
 
-import './watches.css'
+import './Watches.css'
 
 const Watches = (props) => {
   const [products, setProducts] = useState([]);
