@@ -2,7 +2,7 @@ import React from 'react'
 
 import { Helmet } from 'react-helmet'
 
-import './register.css'
+import './Register.css'
 
 const Register = (props) => {
   return (
