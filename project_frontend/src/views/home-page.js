@@ -1,7 +1,6 @@
 import { Helmet } from 'react-helmet'
-import { Box, Card, CardMedia, CardActions, CardContent, Typography, Rating, IconButton, Grid } from '@mui/material';
 import { useState, useEffect } from 'react';
-import AddToCartButton from '../components/AddToCartButton';
+import DisplayProducts from '../components/DisplayProducts';
 
 import './home-page.css'
 
@@ -24,6 +23,7 @@ const HomePage = (props) => {
       <Helmet>
         <title>361 Project</title>
         <meta property="og:title" content="361 Project" />
+        <link rel="icon" type="image/png" href="../../public/logo192.png" sizes="16x16" />
       </Helmet>
       <div className="home-page-container1">
         <div className="home-page-container2">
@@ -92,37 +92,7 @@ const HomePage = (props) => {
           <span>New Arrivals</span>
           <br></br>
         </h1>
-      <Grid container spacing={2}>
-        {products.map((product, index) => (
-          <Grid item>
-            <Card sx={{ maxWidth: 345 }}>
-              <CardMedia
-                sx={{ height: 500 }}
-                image={product.image}
-                title={product.name}
-              />
-              <CardContent sx={{ height: 150, overflowY: 'scroll' }}>
-                <Typography gutterBottom variant="h5" component="div">
-                  {product.name}
-                </Typography>
-                <Typography variant="body2" color="text.secondary">
-                  {product.description}
-                </Typography>
-              </CardContent>
-              <CardActions>
-                <Box sx={{ display: "flex", alignItems: 'center', justifyContent: 'space-between', width: '100%' }}>
-                  <Rating name="half-rating-read" defaultValue={product.numStars} precision={0.1} readOnly />
-                  <Typography variant="h6" color="text.secondary" sx={{ fontWeight: '700' }}>
-                  ${product.price.toFixed(2)}
-                  </Typography>
-                  <AddToCartButton addToCart={props.addToCart} product={product} />
-                </Box>
-              </CardActions>
-            </Card>
-          </Grid>
-        ))}
-      </Grid>
-
+      <DisplayProducts addToCart={props.addToCart} products={products} />
     </div>
   )
 }

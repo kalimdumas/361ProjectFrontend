@@ -1,7 +1,6 @@
 import { Helmet } from 'react-helmet'
-import { Box, Card, CardMedia, CardActions, CardContent,Typography, Rating, Grid } from '@mui/material';
+import DisplayProducts from '../components/DisplayProducts';
 import { useState, useEffect } from 'react';
-import AddToCartButton from '../components/AddToCartButton';
 
 import './hats.css'
 
@@ -30,36 +29,7 @@ const Hats = (props) => {
         <span>Hats</span>
         <br></br>
       </h1>
-      <Grid container spacing={2}>
-        {products.map((product, index) => (
-          <Grid item>
-            <Card sx={{ maxWidth: 345}}>
-              <CardMedia
-                sx={{ height: 400 }}
-                image={product.image}
-                title={product.name}
-              />
-              <CardContent sx={{height: 150, overflowY: 'scroll'}}>
-                <Typography gutterBottom variant="h5" component="div">
-                  {product.name}
-                </Typography>
-                <Typography variant="body2" color="text.secondary">
-                  {product.description}
-                </Typography>
-              </CardContent>
-              <CardActions>
-                <Box sx={{ display: "flex", alignItems: 'center', justifyContent: 'space-between', width: '100%' }}>
-                  <Rating name="half-rating-read" defaultValue={product.numStars} precision={0.1} readOnly />
-                  <Typography variant="h6" color="text.secondary" sx={{ fontWeight: '700' }}>
-                  ${product.price.toFixed(2)}
-                  </Typography>
-                  <AddToCartButton addToCart={props.addToCart} product={product} />
-                </Box>
-              </CardActions>
-            </Card>
-          </Grid>
-        ))}
-      </Grid>
+      <DisplayProducts addToCart={props.addToCart} products={products} />
     </div>
   )
 }

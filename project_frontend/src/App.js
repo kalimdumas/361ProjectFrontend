@@ -25,6 +25,7 @@ import KidsShirts from './views/kids-shirts'
 import Checkout from './views/checkout'
 import Hats from './views/hats'
 import WomenJackets from './views/women-jackets'
+import DisplayProducts from './components/DisplayProducts'
 
 const App = () => {
   const [cart, setCart] = useState([{}]);
@@ -40,7 +41,7 @@ const App = () => {
     console.log(cart);
   }
 
-  return (
+  return ( 
     <BrowserRouter>
       <Routes>
         <Route element={<Home />} path="/" >
