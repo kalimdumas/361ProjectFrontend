@@ -12,7 +12,7 @@ const Necklaces = (props) => {
       method: 'GET',
       redirect: 'follow'
     };
-    fetch("http://localhost:5257/necklaces", requestOptions)
+    fetch("http://localhost:5257/Necklaces", requestOptions)
       .then(response => response.json())
       .then(response => productHandler(response))
       .catch(error => console.log('error', error))
