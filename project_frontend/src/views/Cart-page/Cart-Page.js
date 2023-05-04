@@ -5,7 +5,7 @@ import DeleteIcon from '@mui/icons-material/Delete';
 
 import { Helmet } from 'react-helmet'
 
-import './cart-page.css'
+import './Cart-page.css'
 
 const CartPage = (props) => {
 

@@ -1,6 +1,6 @@
 import Header from "../../components/header";
 import { Outlet } from "react-router-dom";
-import './home-page.css';
+import './Home-Page/Home-Page.css';
 
 export default function Home() {
     return <>

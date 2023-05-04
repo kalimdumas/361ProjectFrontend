@@ -3,7 +3,7 @@ import React from 'react'
 import { Helmet } from 'react-helmet'
 
 import Header from '../components/header'
-import './checkout.css'
+import './Checkout.css'
 
 const Checkout = (props) => {
   return (
