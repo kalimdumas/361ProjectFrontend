@@ -6,10 +6,10 @@ function ProductPrice(props) {
     const [originalPrice, setOriginalPrice] = useState(null);
 
     useEffect(() => {
-        if (props.sale !== null) {
+        if (props.sale != null) {
             setOriginalPrice(props.price);
-            const discount = props.discount;
-            const isPercentDiscount = props.isPercentDiscount;
+            const discount = props.sale.discount;
+            const isPercentDiscount = props.sale.isPercentDiscount;
             let salePercentage = 0;
             let dollarAmount = 0;
 
@@ -39,8 +39,8 @@ function ProductPrice(props) {
 
 
     return (
-        <Typography variant="h6" color="text.secondary" sx={{ fontWeight: '700', textDecoration: originalPrice !== price ? 'line-through' : 'none' }}>
-            ${originalPrice !== price ? originalPrice : price}
+        <Typography variant="h6" color="text.secondary" sx={{ fontWeight: '700', textDecoration: originalPrice != price ? 'line-through' : 'none' }}>
+            ${originalPrice != price ? originalPrice : price}
         </Typography>
     );
 }
