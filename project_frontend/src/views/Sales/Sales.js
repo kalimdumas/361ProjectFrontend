@@ -6,17 +6,6 @@ import { Helmet } from 'react-helmet';
 import './Sales.css'
 
 const Sales = (props) => {
-  const [productsAndTheirSales, setProductsAndTheirSales] = useState([]);
-  useEffect(() => {
-    var requestOptions = {
-      method: 'GET',
-      redirect: 'follow'
-    };
-    fetch("http://localhost:5257/sales", requestOptions)
-      .then(response => response.json())
-      .then(response => setProductsAndTheirSales(response))
-      .catch(error => console.log('error', error))
-  }, [])
 
   const calculateSalePrice = (price, discount, isPercentDiscount) => {
     if (isPercentDiscount) {
@@ -37,7 +26,7 @@ const Sales = (props) => {
         <br></br>
       </h1>
       <Grid container spacing={2}>
-        {productsAndTheirSales.map((productAndSale, index) => (
+        {props.productsAndSales.map((productAndSale, index) => (
           <Grid item key={index}>
             <Card sx={{ maxWidth: 345 }}>
               <CardMedia
@@ -59,7 +48,7 @@ const Sales = (props) => {
                   <Typography variant="h6" color="text.secondary" sx={{ fontWeight: '700', textDecoration: 'line-through' }}>
                     ${productAndSale.item1.price.toFixed(2)}
                   </Typography>
-                  <Typography variant="h6" color="text.secondary" sx={{ fontWeight: '700' }}>
+                  <Typography variant="h6" color="text.secondary" sx={{ fontWeight: '700', color: "black" }}>
                     ${calculateSalePrice(productAndSale.item1.price, productAndSale.item2.discount, productAndSale.item2.isPercentDiscount).toFixed(2)}
                   </Typography>
                   <AddToCartButton addToCart={props.addToCart} product={productAndSale.item1} />

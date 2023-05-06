@@ -1,48 +1,37 @@
-import React, { useState, useEffect } from 'react';
-import Typography from '@mui/material/Typography';
+import { Box, Typography } from "@mui/material";
 
-function ProductPrice(props) {
-    const [price, setPrice] = useState(null);
-    const [originalPrice, setOriginalPrice] = useState(null);
+export default function ProductPrice(props) {
 
-    useEffect(() => {
-        if (props.sale != null) {
-            setOriginalPrice(props.price);
-            const discount = props.sale.discount;
-            const isPercentDiscount = props.sale.isPercentDiscount;
-            let salePercentage = 0;
-            let dollarAmount = 0;
+    const calculateSalePrice = (product) => {
 
-            if (isPercentDiscount) {
-                salePercentage = discount;
-                dollarAmount = 0;
-            } else {
-                dollarAmount = discount;
-                salePercentage = 0;
-            }
+        props.productsAndSales.forEach(element => {
+            console.log(element);
+        });
 
-            const url = `http://localhost:5257/apply-sale?originalPrice=${originalPrice}&salePercentage=${salePercentage}&dollarAmount=${dollarAmount}`;
-
-            fetch(url)
-                .then(response => response.text())
-                .then(result => {
-                    const newPrice = parseFloat(result);
-
-                    setPrice(newPrice);
-                })
-                .catch(error => console.error(error));
+        if (isPercentDiscount) {
+            return price * (1 - (discount / 100.0));
         } else {
-            // No sale, use regular price
-            setPrice(props.price);
+            return price - discount;
         }
-    }, [props]);
-
+    }
 
     return (
-        <Typography variant="h6" color="text.secondary" sx={{ fontWeight: '700', textDecoration: originalPrice != price ? 'line-through' : 'none' }}>
-            ${originalPrice != price ? originalPrice : price}
-        </Typography>
+        <Box>
+            {props.product.saleId != null && (
+                <Box>
+                    <Typography variant="h6" color="text.secondary" sx={{ fontWeight: '700', textDecoration: 'line-through' }}>
+                        ${props.product.price.toFixed(2)}
+                    </Typography>
+                    <Typography variant="h6" color="text.secondary" sx={{ fontWeight: '700', color: "black" }}>
+                        ${calculateSalePrice(props.product.price, props.product.saleDiscount, true).toFixed(2)}
+                    </Typography>
+                </Box>
+            )}
+            <Typography variant="h6" color="text.secondary" sx={{ fontWeight: '700', color: "black" }}>
+                ${props.product.price.toFixed(3)}
+            </Typography>
+        </Box>
     );
-}
 
-export default ProductPrice
+
+}

@@ -1,13 +1,31 @@
-import React from 'react'
 import { Link } from 'react-router-dom'
 import { Box, Card, CardMedia, CardContent, Typography, IconButton, Grid } from '@mui/material';
 import DeleteIcon from '@mui/icons-material/Delete';
+import { useEffect, useState } from 'react';
 
 import { Helmet } from 'react-helmet'
 
 import './Cart-Page.css'
 
 const CartPage = (props) => {
+
+  useEffect(() => {
+    if(props.products){ findTotals() }
+
+  }, []);
+
+  const [totals, setTotals] = useState({subtotal: 0, taxes: 0, total: 0})
+
+  const findTotals = () => {
+    var temp = {subtotal: 0, taxes: 0, total: 0};
+    props.products.forEach(product => {
+      temp.subtotal += product.price;
+    });
+    
+    temp.taxes = 0.07 * temp.subtotal;
+    temp.total = temp.subtotal + temp.taxes;
+    setTotals(temp);
+  }
 
   return (
     <div className="cart-page-container">
@@ -21,7 +39,7 @@ const CartPage = (props) => {
           <div className="cart-page-container3">
             <Grid container spacing={2}>
               {props.products.map((product, index) => (
-                <Grid item>
+                <Grid item key={index}>
                   <Card key={index} sx={{ height: 150, width: 500, display: 'flex', justifyContent: 'space-between' }}>
                     <Box sx={{ display: 'flex', flexDirection: 'column' }}>
                       <CardContent sx={{ flex: '1 0 auto' }}>
@@ -30,7 +48,7 @@ const CartPage = (props) => {
                         </Typography>
                         <Typography variant="h6" color="text.secondary" sx={{ fontWeight: '700', justifyContent: "space-between" }}>
                           ${product.price}
-                          <IconButton onClick={props.removeFromCart}>
+                          <IconButton onClick={() => props.removeFromCart(product)}>
                             <DeleteIcon />
                           </IconButton>
                         </Typography>
@@ -58,10 +76,16 @@ const CartPage = (props) => {
               </span>
             </div>
             <div className="cart-page-container7">
-              <span className="cart-page-text11">N/A</span>
-              <span className="cart-page-text12">N/A</span>
+              <span className="cart-page-text11">
+                {totals.subtotal ? `$${totals.subtotal.toFixed(2)}` : "N/A"}
+              </span>
+              <span className="cart-page-text12">
+                {totals.taxes ? `$${totals.taxes.toFixed(2)}` : "N/A"}
+              </span>
               <span className="cart-page-text13">
-                <span>N/A</span>
+                <span>
+                  {totals.total ? `$${totals.total.toFixed(2)}` : "N/A"}
+                </span>
                 <br></br>
               </span>
             </div>

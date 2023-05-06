@@ -14,7 +14,9 @@ const Necklaces = (props) => {
     };
     fetch("http://localhost:5257/Necklaces", requestOptions)
       .then(response => response.json())
-      .then(response => productHandler(response))
+      .then(response => {productHandler(response);
+        products.forEach(product => console.log(product.saleId))
+      })
       .catch(error => console.log('error', error))
   }, [])
   return (
