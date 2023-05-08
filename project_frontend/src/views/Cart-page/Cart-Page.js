@@ -10,21 +10,25 @@ import './Cart-Page.css'
 const CartPage = (props) => {
 
   useEffect(() => {
-    if(props.products){ findTotals() }
+    if (props.products) { findTotals() }
+  }, [props.products]);
 
-  }, []);
-
-  const [totals, setTotals] = useState({subtotal: 0, taxes: 0, total: 0})
+  const [totals, setTotals] = useState({ subtotal: 0, taxes: 0, total: 0 })
 
   const findTotals = () => {
-    var temp = {subtotal: 0, taxes: 0, total: 0};
+    var temp = { subtotal: 0, taxes: 0, total: 0 };
     props.products.forEach(product => {
       temp.subtotal += product.price;
     });
-    
+
     temp.taxes = 0.07 * temp.subtotal;
     temp.total = temp.subtotal + temp.taxes;
     setTotals(temp);
+  }
+
+  const handleRemoveFromCart = (product) => {
+    props.removeFromCart(product);
+    findTotals();
   }
 
   return (
@@ -48,7 +52,7 @@ const CartPage = (props) => {
                         </Typography>
                         <Typography variant="h6" color="text.secondary" sx={{ fontWeight: '700', justifyContent: "space-between" }}>
                           ${product.price}
-                          <IconButton onClick={() => props.removeFromCart(product)}>
+                          <IconButton onClick={() => handleRemoveFromCart(product)}>
                             <DeleteIcon />
                           </IconButton>
                         </Typography>
