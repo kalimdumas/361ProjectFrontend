@@ -37,7 +37,8 @@ const App = () => {
   fetch("http://localhost:5257/sales", requestOptions)
     .then(response => response.json())
     .then(result => setProductsAndSales(result))
-    .catch(error => console.log('error'));
+    .catch(error => console.log('error'))
+    .finally(console.log(productsAndSales));
   }, []);
 
   const [productsAndSales, setProductsAndSales] = useState([]);
