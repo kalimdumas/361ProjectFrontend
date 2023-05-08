@@ -5,13 +5,13 @@ export default function ProductPrice(props) {
     const calculateSalePrice = (product) => {
         console.log(props.productsAndSales);
 
-        // const productAndSale = props.productsAndSales.filter(element => element.item1.name === product.name)
+        const productAndSale = props.productsAndSales.filter(element => element.item1.name === product.name)
 
-        // if (productAndSale.item2.isPercentDiscount) {
-        //     return product.price * (1 - (productAndSale.item2.discount / 100.0));
-        // } else {
-        //     return product.price - discount;
-        // }
+        if (productAndSale.item2.isPercentDiscount) {
+            return product.price * (1 - (productAndSale.item2.discount / 100.0));
+        } else {
+            return product.price - discount;
+        }
     }
 
     return (
