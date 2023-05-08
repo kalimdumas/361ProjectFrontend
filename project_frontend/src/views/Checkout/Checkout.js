@@ -1,17 +1,21 @@
-import React from 'react'
+import { Navigate } from 'react-router-dom'
+import { useState } from 'react'
 
 import { Helmet } from 'react-helmet'
 
 import './Checkout.css'
 
 const Checkout = (props) => {
+
+  const [didCheckout, setDidCheckout] = useState(false);
+
   return (
     <div className="checkout-container">
       <Helmet>
         <title>Checkout - 361 Project</title>
         <meta property="og:title" content="Checkout - 361 Project" />
       </Helmet>
-      <h1 className="checkout-text">Checkout Page</h1>
+      <h1 className="checkout-text">Checkosut Page</h1>
       <div className="checkout-container1">
         <div className="checkout-container2">
           <input type="text" className="checkout-card-number input" />
@@ -34,9 +38,11 @@ const Checkout = (props) => {
           <span className="checkout-text08">State:</span>
           <span className="checkout-text09">Postal Code:</span>
           <h1>Shipping Address</h1>
-        </div>
+        </div>s
       </div>
-      <button className="checkout-button button">Place Order</button>
+      <button onClick={() => {props.deleteCart(), setDidCheckout(true)}} className="checkout-button button">
+        {didCheckout ? <Navigate to="/" /> : "Place Order"}
+      </button>
     </div>
   )
 }

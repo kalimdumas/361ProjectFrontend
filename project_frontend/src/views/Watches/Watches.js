@@ -17,9 +17,6 @@ const Watches = (props) => {
       .then(response => productHandler(response))
       .catch(error => console.log('error', error))
   }, [])
-  function handleClick(event) {
-    console.log(event.currentTarget);
-  }
   return (
     <div className="watches-container">
       <Helmet>
