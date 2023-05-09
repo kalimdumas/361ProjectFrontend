@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, Switch } from 'react'
 import { Routes, Route, BrowserRouter } from 'react-router-dom'
 
 import './App.css'
@@ -26,21 +26,22 @@ import Checkout from './views/Checkout/Checkout'
 import Hats from './views/Hats/Hats'
 import WomenJackets from './views/Women-Jackets/Women-Jackets'
 import ProductPrice from './components/ProductPrice'
+import ProductsContext from './components/ProductsContext'
 
 const App = () => {
 
-  useEffect(() => {
-  var requestOptions = {
-    method: 'GET',
-    redirect: 'follow'
-  };
-  fetch("http://localhost:5257/sales", requestOptions)
-    .then(response => response.json())
-    .then(result => setProductsAndSales(result))
-    .catch(error => console.log('error'));
-  }, []);
-
   const [productsAndSales, setProductsAndSales] = useState([]);
+
+  useEffect(() => {
+    var requestOptions = {
+      method: 'GET',
+      redirect: 'follow'
+    };
+    fetch("http://localhost:5257/sales", requestOptions)
+      .then(response => response.json())
+      .then(result => setProductsAndSales(result))
+      .catch(error => console.log('error'));
+  }, []);
 
   const [cart, setCart] = useState([]);
 
@@ -51,40 +52,39 @@ const App = () => {
   const removeFromCart = (item) => {
     setCart(cart.filter((product) => {
       return product.name !== item.name;
-    })); 
+    }));
   }
 
   const deleteCart = () => {
     setCart([]);
   }
 
-  return ( 
+  return (
     <BrowserRouter>
       <Routes>
         <Route element={<Home />} path="/" >
-          <Route element={<ProductPrice productsAndSales={productsAndSales} />} path="product-price" />
-          <Route element={<Necklaces addToCart={addToCart} />} path="necklaces" />
-          <Route element={<Backpacks addToCart={addToCart} />} path="backpacks" />
-          <Route element={<KidsShorts addToCart={addToCart} />} path="kids-shorts" />
-          <Route element={<KidsPants addToCart={addToCart} />} path="kids-pants" />
-          <Route element={<Sales addToCart={addToCart} productsAndSales={productsAndSales} />} path="sales" />
-          <Route element={<WomenShorts addToCart={addToCart} />} path="women-shorts" />
-          <Route element={<MenShirts addToCart={addToCart} />} path="men-shirts" />
-          <Route element={<CartPage products={cart} removeFromCart={removeFromCart} addToCart={addToCart} />} path="cart-page" />
-          <Route element={<MenJackets addToCart={addToCart} />} path="men-jackets" />
-          <Route element={<WomenPants addToCart={addToCart} />} path="women-pants" />
-          <Route element={<LoginPage addToCart={addToCart} />} path="login-page" />
-          <Route element={<Register addToCart={addToCart} />} path="register" />
-          <Route element={<KidsJackets addToCart={addToCart} />} path="kids-jackets" />
-          <Route element={<MenShorts addToCart={addToCart} />} path="men-shorts" />
-          <Route element={<Watches addToCart={addToCart} />} path="watches" />
-          <Route element={<WomenShirts addToCart={addToCart} />} path="women-shirts" />
-          <Route element={<HomePage addToCart={addToCart} />} path="/" />
-          <Route element={<MenPants addToCart={addToCart} />} path="men-pants" />
-          <Route element={<KidsShirts addToCart={addToCart} />} path="kids-shirts" />
+          <Route element={<Necklaces productsAndSales={productsAndSales} addToCart={addToCart} />} path="necklaces" />
+          <Route element={<Backpacks productsAndSales={productsAndSales} addToCart={addToCart} />} path="backpacks" />
+          <Route element={<KidsShorts productsAndSales={productsAndSales} addToCart={addToCart} />} path="kids-shorts" />
+          <Route element={<KidsPants productsAndSales={productsAndSales} addToCart={addToCart} />} path="kids-pants" />
+          <Route element={<Sales productsAndSales={productsAndSales} addToCart={addToCart} />} path="sales" />
+          <Route element={<WomenShorts productsAndSales={productsAndSales} addToCart={addToCart} />} path="women-shorts" />
+          <Route element={<MenShirts productsAndSales={productsAndSales} addToCart={addToCart} />} path="men-shirts" />
+          <Route element={<CartPage products={cart} removeFromCart={removeFromCart} />} path="cart-page" />
+          <Route element={<MenJackets productsAndSales={productsAndSales} addToCart={addToCart} />} path="men-jackets" />
+          <Route element={<WomenPants productsAndSales={productsAndSales} addToCart={addToCart} />} path="women-pants" />
+          <Route element={<LoginPage productsAndSales={productsAndSales} addToCart={addToCart} />} path="login-page" />
+          <Route element={<Register productsAndSales={productsAndSales} addToCart={addToCart} />} path="register" />
+          <Route element={<KidsJackets productsAndSales={productsAndSales} addToCart={addToCart} />} path="kids-jackets" />
+          <Route element={<MenShorts productsAndSales={productsAndSales} addToCart={addToCart} />} path="men-shorts" />
+          <Route element={<Watches productsAndSales={productsAndSales} addToCart={addToCart} />} path="watches" />
+          <Route element={<WomenShirts productsAndSales={productsAndSales} addToCart={addToCart} />} path="women-shirts" />
+          <Route element={<HomePage productsAndSales={productsAndSales} addToCart={addToCart} />} path="/" />
+          <Route element={<MenPants productsAndSales={productsAndSales} addToCart={addToCart} />} path="men-pants" />
+          <Route element={<KidsShirts productsAndSales={productsAndSales} addToCart={addToCart} />} path="kids-shirts" />
           <Route element={<Checkout deleteCart={deleteCart} />} path="checkout" />
-          <Route element={<Hats addToCart={addToCart} />} path="hats" />
-          <Route element={<WomenJackets addToCart={addToCart} />} path="women-jackets" />
+          <Route element={<Hats productsAndSales={productsAndSales} addToCart={addToCart} />} path="hats" />
+          <Route element={<WomenJackets productsAndSales={productsAndSales} addToCart={addToCart} />} path="women-jackets" />
         </Route>
       </Routes>
     </BrowserRouter>

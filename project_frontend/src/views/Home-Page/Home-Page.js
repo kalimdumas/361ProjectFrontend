@@ -71,28 +71,11 @@ const HomePage = (props) => {
           className="home-page-image2"
         />
       </div>
-      {/* <div id="FrontProducts" className="home-page-features">
         <h1 className="home-page-text6">
           <span>New Arrivals</span>
           <br></br>
         </h1>
-        <div className="home-page-container3">
-          <FeatureCard1 rootClassName="rootClassName"></FeatureCard1>
-          <FeatureCard1 rootClassName="rootClassName1"></FeatureCard1>
-          <FeatureCard1 rootClassName="rootClassName2"></FeatureCard1>
-          <FeatureCard1 rootClassName="rootClassName3"></FeatureCard1>
-          <FeatureCard1 rootClassName="rootClassName7"></FeatureCard1>
-          <FeatureCard1 rootClassName="rootClassName6"></FeatureCard1>
-          <FeatureCard1 rootClassName="rootClassName5"></FeatureCard1>
-          <FeatureCard1 rootClassName="rootClassName4"></FeatureCard1>
-        </div>
-      </div> */}
-
-        <h1 className="home-page-text6">
-          <span>New Arrivals</span>
-          <br></br>
-        </h1>
-      <DisplayProducts addToCart={props.addToCart} products={products} />
+        <DisplayProducts addToCart={props.addToCart} products={products} productsAndSales={props.productsAndSales} />
     </div>
   )
 }

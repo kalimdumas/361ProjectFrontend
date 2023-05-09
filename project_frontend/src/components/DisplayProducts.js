@@ -1,6 +1,7 @@
 import React from 'react';
 import AddToCartButton from './AddToCartButton';
 import { Box, Card, CardMedia, CardActions, CardContent, Typography, Rating, Grid } from '@mui/material';
+import ProductPrice from './ProductPrice';
 
 export default function DisplayProducts(props) {
     return <><Grid container spacing={2}>
@@ -23,9 +24,7 @@ export default function DisplayProducts(props) {
                     <CardActions>
                         <Box sx={{ display: "flex", alignItems: 'center', justifyContent: 'space-between', width: '100%' }}>
                             <Rating name="half-rating-read" defaultValue={product.numStars} precision={0.1} readOnly />
-                            <Typography variant="h6" color="text.secondary" sx={{ fontWeight: '700', color: 'black' }}>
-                                ${product.price.toFixed(2)}
-                            </Typography>
+                            <ProductPrice product={product} productsAndSales={props.productsAndSales} />
                             <AddToCartButton addToCart={props.addToCart} product={product} />
                         </Box>
                     </CardActions>

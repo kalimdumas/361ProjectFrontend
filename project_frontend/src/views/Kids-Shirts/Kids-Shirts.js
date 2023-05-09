@@ -24,7 +24,7 @@ const KidsShirts = (props) => {
         <meta property="og:title" content="Kids-Shirts - 361 Project" />
       </Helmet>
       <h1 className="kids-shirts-text">Kid&apos;s Shirts</h1>
-      <DisplayProducts addToCart={props.addToCart} products={products} />
+      <DisplayProducts addToCart={props.addToCart} products={products} productsAndSales={props.productsAndSales} />
     </div>
   )
 }
