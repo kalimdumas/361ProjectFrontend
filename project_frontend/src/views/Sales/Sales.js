@@ -51,7 +51,7 @@ const Sales = (props) => {
                   <Typography variant="h6" color="text.secondary" sx={{ fontWeight: '700', color: "black" }}>
                     ${calculateSalePrice(productAndSale.item1.price, productAndSale.item2.discount, productAndSale.item2.isPercentDiscount).toFixed(2)}
                   </Typography>
-                  <AddToCartButton addToCart={props.addToCart} product={productAndSale.item1} />
+                  <AddToCartButton addToCart={props.addToCart} product={{ ...productAndSale.item1, isOnSale: true, sale: productAndSale.item2 }} />
                 </Box>
               </CardActions>
             </Card>
