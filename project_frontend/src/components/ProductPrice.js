@@ -1,14 +1,16 @@
 import { Typography } from "@mui/material";
 import { useContext } from "react";
-import ProductsContext from "./ProductsContext";
+import { ProductPriceContext } from "./ProductPriceContext";
 
 const ProductPrice = (props) => {
 
+    const { productsAndSales, addToCart } = useContext(ProductPriceContext);
+
     const calculateSalePrice = (product) => {
-        if(props.productsAndSales.length === 0){
+        if(productsAndSales.length === 0){
             return;
         }
-        const productAndSale = props.productsAndSales.find(element => element.item1.name === product.name);
+        const productAndSale = productsAndSales.find(element => element.item1.name === product.name);
         if (productAndSale.item2.isPercentDiscount) {
             return product.price * (1 - (productAndSale.item2.discount / 100.0));
         } else {

@@ -1,4 +1,4 @@
-import React, { useState, useEffect, Switch } from 'react'
+import React, { useState, useEffect, createContext } from 'react'
 import { Routes, Route, BrowserRouter } from 'react-router-dom'
 
 import './App.css'
@@ -25,8 +25,7 @@ import KidsShirts from './views/Kids-Shirts/Kids-Shirts'
 import Checkout from './views/Checkout/Checkout'
 import Hats from './views/Hats/Hats'
 import WomenJackets from './views/Women-Jackets/Women-Jackets'
-import ProductPrice from './components/ProductPrice'
-import ProductsContext from './components/ProductsContext'
+import { ProductPriceContext } from './components/ProductPriceContext'
 
 const App = () => {
 
@@ -60,34 +59,38 @@ const App = () => {
   }
 
   return (
-    <BrowserRouter>
-      <Routes>
-        <Route element={<Home />} path="/" >
-          <Route element={<Necklaces productsAndSales={productsAndSales} addToCart={addToCart} />} path="necklaces" />
-          <Route element={<Backpacks productsAndSales={productsAndSales} addToCart={addToCart} />} path="backpacks" />
-          <Route element={<KidsShorts productsAndSales={productsAndSales} addToCart={addToCart} />} path="kids-shorts" />
-          <Route element={<KidsPants productsAndSales={productsAndSales} addToCart={addToCart} />} path="kids-pants" />
-          <Route element={<Sales productsAndSales={productsAndSales} addToCart={addToCart} />} path="sales" />
-          <Route element={<WomenShorts productsAndSales={productsAndSales} addToCart={addToCart} />} path="women-shorts" />
-          <Route element={<MenShirts productsAndSales={productsAndSales} addToCart={addToCart} />} path="men-shirts" />
-          <Route element={<CartPage products={cart} removeFromCart={removeFromCart} />} path="cart-page" />
-          <Route element={<MenJackets productsAndSales={productsAndSales} addToCart={addToCart} />} path="men-jackets" />
-          <Route element={<WomenPants productsAndSales={productsAndSales} addToCart={addToCart} />} path="women-pants" />
-          <Route element={<LoginPage productsAndSales={productsAndSales} addToCart={addToCart} />} path="login-page" />
-          <Route element={<Register productsAndSales={productsAndSales} addToCart={addToCart} />} path="register" />
-          <Route element={<KidsJackets productsAndSales={productsAndSales} addToCart={addToCart} />} path="kids-jackets" />
-          <Route element={<MenShorts productsAndSales={productsAndSales} addToCart={addToCart} />} path="men-shorts" />
-          <Route element={<Watches productsAndSales={productsAndSales} addToCart={addToCart} />} path="watches" />
-          <Route element={<WomenShirts productsAndSales={productsAndSales} addToCart={addToCart} />} path="women-shirts" />
-          <Route element={<HomePage productsAndSales={productsAndSales} addToCart={addToCart} />} path="/" />
-          <Route element={<MenPants productsAndSales={productsAndSales} addToCart={addToCart} />} path="men-pants" />
-          <Route element={<KidsShirts productsAndSales={productsAndSales} addToCart={addToCart} />} path="kids-shirts" />
-          <Route element={<Checkout deleteCart={deleteCart} />} path="checkout" />
-          <Route element={<Hats productsAndSales={productsAndSales} addToCart={addToCart} />} path="hats" />
-          <Route element={<WomenJackets productsAndSales={productsAndSales} addToCart={addToCart} />} path="women-jackets" />
-        </Route>
-      </Routes>
-    </BrowserRouter>
+    <div>
+      <BrowserRouter>
+        <ProductPriceContext.Provider value={{ productsAndSales }}>
+          <Routes>
+            <Route element={<Home />} path="/" >
+              <Route element={<Necklaces addToCart={addToCart} />} path="necklaces" />
+              <Route element={<Backpacks addToCart={addToCart} />} path="backpacks" />
+              <Route element={<KidsShorts addToCart={addToCart} />} path="kids-shorts" />
+              <Route element={<KidsPants addToCart={addToCart} />} path="kids-pants" />
+              <Route element={<Sales addToCart={addToCart} />} path="sales" />
+              <Route element={<WomenShorts addToCart={addToCart} />} path="women-shorts" />
+              <Route element={<MenShirts addToCart={addToCart} />} path="men-shirts" />
+              <Route element={<CartPage products={cart} removeFromCart={removeFromCart} />} path="cart-page" />
+              <Route element={<MenJackets addToCart={addToCart} />} path="men-jackets" />
+              <Route element={<WomenPants addToCart={addToCart} />} path="women-pants" />
+              <Route element={<LoginPage />} path="login-page" />
+              <Route element={<Register />} path="register" />
+              <Route element={<KidsJackets addToCart={addToCart} />} path="kids-jackets" />
+              <Route element={<MenShorts addToCart={addToCart} />} path="men-shorts" />
+              <Route element={<Watches addToCart={addToCart} />} path="watches" />
+              <Route element={<WomenShirts addToCart={addToCart} />} path="women-shirts" />
+              <Route element={<HomePage addToCart={addToCart} />} path="/" />
+              <Route element={<MenPants addToCart={addToCart} />} path="men-pants" />
+              <Route element={<KidsShirts addToCart={addToCart} />} path="kids-shirts" />
+              <Route element={<Checkout deleteCart={deleteCart} />} path="checkout" />
+              <Route element={<Hats addToCart={addToCart} />} path="hats" />
+              <Route element={<WomenJackets addToCart={addToCart} />} path="women-jackets" />
+            </Route>
+          </Routes>
+        </ProductPriceContext.Provider>
+      </BrowserRouter>
+    </div>
   )
 }
 
