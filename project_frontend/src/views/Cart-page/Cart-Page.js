@@ -16,8 +16,6 @@ const CartPage = (props) => {
 
   const [totals, setTotals] = useState({subtotal: 0, taxes: 0, total: 0})
 
-  const [cart, setCart] = useState(props.cart);
-
   const findTotals = () => {
     var temp = {subtotal: 0, taxes: 0, total: 0};
     props.products.forEach(product => {
@@ -50,7 +48,7 @@ const CartPage = (props) => {
                         </Typography>
                         <Typography variant="h6" color="text.secondary" sx={{ fontWeight: '700', justifyContent: "space-between" }}>
                           ${product.price}
-                          <IconButton onClick={() => props.setCart(removeFromCart(product))}>
+                          <IconButton onClick={() => props.removeFromCart(product)}>
                             <DeleteIcon />
                           </IconButton>
                         </Typography>

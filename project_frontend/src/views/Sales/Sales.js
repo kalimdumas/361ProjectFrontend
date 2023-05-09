@@ -1,5 +1,4 @@
 import { Box, Card, CardMedia, CardActions, CardContent, Typography, Rating, Grid } from '@mui/material';
-import { useState, useEffect } from 'react';
 import AddToCartButton from '../../components/AddToCartButton';
 import { Helmet } from 'react-helmet';
 
