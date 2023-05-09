@@ -1,8 +1,9 @@
 import { Helmet } from 'react-helmet'
 import DisplayProducts from '../../components/DisplayProducts';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useContext } from 'react';
 
 import './Men-Shirts.css'
+import { ProductPriceContext } from '../../components/ProductPriceContext';
 
 const MenShirts = (props) => {
   const [products, setProducts] = useState([]);
@@ -24,7 +25,7 @@ const MenShirts = (props) => {
         <meta property="og:title" content="Men-Shirts - 361 Project" />
       </Helmet>
       <h1 className="men-shirts-text">Men&apos;s Shirts</h1>
-      <DisplayProducts addToCart={props.addToCart} products={products} productsAndSales={props.productsAndSales} />
+      <DisplayProducts addToCart={props.addToCart} products={products} />
     </div>
   )
 }

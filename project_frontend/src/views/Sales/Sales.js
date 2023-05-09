@@ -1,11 +1,14 @@
 import { Box, Card, CardMedia, CardActions, CardContent, Typography, Rating, Grid } from '@mui/material';
 import AddToCartButton from '../../components/AddToCartButton';
 import { Helmet } from 'react-helmet';
+import { useContext } from 'react';
 
 import './Sales.css'
-import ProductPrice from '../../components/ProductPrice';
+import { ProductPriceContext } from '../../components/ProductPriceContext';
 
 const Sales = (props) => {
+
+  const productsAndSales = useContext(ProductPriceContext);
 
   const calculateSalePrice = (price, discount, isPercentDiscount) => {
     if (isPercentDiscount) {
@@ -26,7 +29,7 @@ const Sales = (props) => {
         <br></br>
       </h1>
       <Grid container spacing={2}>
-        {props.productsAndSales.map((productAndSale, index) => (
+        {productsAndSales.productsAndSales.map((productAndSale, index) => (
           <Grid item key={index}>
             <Card sx={{ maxWidth: 345 }}>
               <CardMedia
