@@ -8,28 +8,32 @@ import { ProductPriceContext } from '../../components/ProductPriceContext';
 
 const Sales = (props) => {
 
-  const productsAndSales = useContext(ProductPriceContext);
+  const { productsAndSales, addToCart } = useContext(ProductPriceContext);
 
-  const calculateSalePrice = (price, discount, isPercentDiscount) => {
-    if (isPercentDiscount) {
-      return price * (1 - (discount / 100.0));
-    } else {
-      return price - discount;
+  const calculateSalePrice = (product) => {
+    if(productsAndSales.length === 0){
+        return;
     }
-  }
+    const productAndSale = productsAndSales.find(element => element.item1.name === product.name);
+    if (productAndSale.item2.isPercentDiscount) {
+        return product.price * (1 - (productAndSale.item2.discount / 100.0));
+    } else {
+        return product.price - productAndSale.item2.discount;
+    }
+}
 
   return <>
-    <div className="men-shorts-container">
+    <div className="sales-container">
       <Helmet>
         <title>Sales - 361 Project</title>
-        <meta property="og:title" content="Men-Shorts - 361 Project" />
+        <meta property="og:title" content="Sales - 361 Project" />
       </Helmet>
-      <h1 className="men-shorts-text">
+      <h1 className="sales-text">
         <span>Sales</span>
         <br></br>
       </h1>
       <Grid container spacing={2}>
-        {productsAndSales.productsAndSales.map((productAndSale, index) => (
+        {productsAndSales.map((productAndSale, index) => (
           <Grid item key={index}>
             <Card sx={{ maxWidth: 345 }}>
               <CardMedia
@@ -52,9 +56,9 @@ const Sales = (props) => {
                     ${productAndSale.item1.price.toFixed(2)}
                   </Typography>
                   <Typography variant="h6" color="text.secondary" sx={{ fontWeight: '700', color: "black" }}>
-                    ${calculateSalePrice(productAndSale.item1.price, productAndSale.item2.discount, productAndSale.item2.isPercentDiscount).toFixed(2)}
+                    ${calculateSalePrice(productAndSale.item1).toFixed(2)}
                   </Typography>
-                  <AddToCartButton addToCart={props.addToCart} product={{ ...productAndSale.item1, isOnSale: true, sale: productAndSale.item2 }} />
+                  <AddToCartButton addToCart={addToCart} product={{ ...productAndSale.item1, isOnSale: true, sale: productAndSale.item2 }} />
                 </Box>
               </CardActions>
             </Card>

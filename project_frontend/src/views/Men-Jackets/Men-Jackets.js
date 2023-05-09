@@ -28,7 +28,7 @@ const MenJackets = (props) => {
         <span>Men&apos;s Jackets </span>
         <br></br>
       </h1>
-      <DisplayProducts addToCart={props.addToCart} products={products} productsAndSales={props.productsAndSales} />
+      <DisplayProducts addToCart={props.addToCart} products={products} />
     </div>
   )
 }

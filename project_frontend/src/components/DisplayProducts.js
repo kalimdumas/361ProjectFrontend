@@ -2,8 +2,14 @@ import React from 'react';
 import AddToCartButton from './AddToCartButton';
 import { Box, Card, CardMedia, CardActions, CardContent, Typography, Rating, Grid } from '@mui/material';
 import ProductPrice from './ProductPrice';
+import { useContext } from 'react';
+
+import { ProductPriceContext } from './ProductPriceContext';
 
 export default function DisplayProducts(props) {
+
+    const { productsAndSales, addToCart } = useContext(ProductPriceContext);
+
     return <><Grid container spacing={2}>
         {props.products.map((product, index) => (
             <Grid item key={index}>
@@ -24,8 +30,8 @@ export default function DisplayProducts(props) {
                     <CardActions>
                         <Box sx={{ display: "flex", alignItems: 'center', justifyContent: 'space-between', width: '100%' }}>
                             <Rating name="half-rating-read" defaultValue={product.numStars} precision={0.1} readOnly />
-                            <ProductPrice product={product} productsAndSales={props.productsAndSales} />
-                            <AddToCartButton addToCart={props.addToCart} product={product} />
+                            <ProductPrice product={product} />
+                            <AddToCartButton addToCart={addToCart} product={product} />
                         </Box>
                     </CardActions>
                 </Card>

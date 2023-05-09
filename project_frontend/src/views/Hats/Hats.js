@@ -28,7 +28,7 @@ const Hats = (props) => {
         <span>Hats</span>
         <br></br>
       </h1>
-      <DisplayProducts addToCart={props.addToCart} products={products} productsAndSales={props.productsAndSales} />
+      <DisplayProducts addToCart={props.addToCart} products={products} />
     </div>
   )
 }
