@@ -24,7 +24,7 @@ export default function DisplayProducts(props) {
                     <CardActions>
                         <Box sx={{ display: "flex", alignItems: 'center', justifyContent: 'space-between', width: '100%' }}>
                             <Rating name="half-rating-read" defaultValue={product.numStars} precision={0.1} readOnly />
-                            <ProductPrice product={product} />
+                            <ProductPrice product={product} productsAndSales={props.productsAndSales} />
                             <AddToCartButton addToCart={props.addToCart} product={product} />
                         </Box>
                     </CardActions>

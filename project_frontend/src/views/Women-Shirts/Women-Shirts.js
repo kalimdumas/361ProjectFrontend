@@ -16,7 +16,7 @@ const WomenShirts = (props) => {
     fetch("http://localhost:5257/womens-shirts", requestOptions)
       .then(response => response.json())
       .then(response => productHandler(response))
-      .catch(error => console.log('error', error))
+      .catch(error => console.log('error', error));
   },[])
   return (
     <div className="women-shirts-container">
@@ -25,7 +25,7 @@ const WomenShirts = (props) => {
         <meta property="og:title" content="Women-Shirts - 361 Project" />
       </Helmet>
       <h1 className="women-shirts-text">Women&apos;s Shirts</h1>
-      <DisplayProducts addToCart={props.addToCart} products={products} />
+      <DisplayProducts addToCart={props.addToCart} products={products} productsAndSales={props.productsAndSales} />
     </div>
   )
 }

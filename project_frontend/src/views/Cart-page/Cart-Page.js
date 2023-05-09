@@ -51,7 +51,7 @@ const CartPage = (props) => {
                           {product.name}
                         </Typography>
                         <Typography variant="h6" color="text.secondary" sx={{ fontWeight: '700', justifyContent: "space-between" }}>
-                          ${product.price}
+                          ${product.price.toFixed(2)}
                           <IconButton onClick={() => handleRemoveFromCart(product)}>
                             <DeleteIcon />
                           </IconButton>

@@ -3,6 +3,7 @@ import AddToCartButton from '../../components/AddToCartButton';
 import { Helmet } from 'react-helmet';
 
 import './Sales.css'
+import ProductPrice from '../../components/ProductPrice';
 
 const Sales = (props) => {
 

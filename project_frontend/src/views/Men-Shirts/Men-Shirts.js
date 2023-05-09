@@ -12,7 +12,6 @@ const MenShirts = (props) => {
       method: 'GET',
       redirect: 'follow'
     };
-    
     fetch("http://localhost:5257/mens-shirts", requestOptions)
       .then(response => response.json())
       .then(response => productHandler(response))
@@ -25,7 +24,7 @@ const MenShirts = (props) => {
         <meta property="og:title" content="Men-Shirts - 361 Project" />
       </Helmet>
       <h1 className="men-shirts-text">Men&apos;s Shirts</h1>
-      <DisplayProducts addToCart={props.addToCart} products={products} />
+      <DisplayProducts addToCart={props.addToCart} products={products} productsAndSales={props.productsAndSales} />
     </div>
   )
 }

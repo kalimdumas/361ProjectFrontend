@@ -15,7 +15,6 @@ const Necklaces = (props) => {
     fetch("http://localhost:5257/Necklaces", requestOptions)
       .then(response => response.json())
       .then(response => {productHandler(response);
-        products.forEach(product => console.log(product.saleId))
       })
       .catch(error => console.log('error', error))
   }, [])
@@ -29,7 +28,7 @@ const Necklaces = (props) => {
         <span>Necklaces</span>
         <br></br>
       </h1>
-      <DisplayProducts addToCart={props.addToCart} products={products} />
+      <DisplayProducts addToCart={props.addToCart} products={products} productsAndSales={props.productsAndSales} />
     </div>
   )
 }
