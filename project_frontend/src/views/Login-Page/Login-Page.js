@@ -1,26 +1,47 @@
-import React from 'react'
-import { Link } from 'react-router-dom'
+import React, { useState } from 'react'
+import { Link, useNavigate} from 'react-router-dom'
 
 import { Helmet } from 'react-helmet'
 
 import './Login-Page.css'
 
 const LoginPage = (props) => {
+
+  const [username, setUsername] = useState('');
+  const [password, setPassword] = useState('');
+  const navigate = useNavigate();
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    if (username === 'myusername' && password === 'mypassword') {
+      alert('Login successful!');
+      navigate('/');
+    } else {
+      alert('Invalid username or password');
+    }
+  };
+
   return (
     <div className="login-page-container">
       <Helmet>
         <title>Login-Page - 361 Project</title>
         <meta property="og:title" content="Login-Page - 361 Project" />
       </Helmet>
-      <input type="text" className="login-page-username input" />
-      <input type="text" className="login-page-password input" />
-      <span className="login-page-text">Username:</span>
-      <span className="login-page-text1">Password:</span>
+      <form onSubmit={handleSubmit}>
+        <label>
+          <input type="text" className="login-page-username input" value={username} onChange={(event) => setUsername(event.target.value)}/>
+        </label>
+        <label>
+          <input type="text" className="login-page-password input" value={password} onChange={(event) => setPassword(event.target.value)}/>
+        </label>
+        <span className="login-page-text">Username:</span>
+        <span className="login-page-text1">Password:</span>
+        <button className="login-page-button button" type="submit">Login</button>
+      </form>
       <div className="login-page-container1"></div>
       <Link to="/register" className="login-page-navlink button">
         Register
       </Link>
-      <button className="login-page-button button">Login</button>
       <span className="login-page-text2">
         Not an account yet? Create one now
       </span>
