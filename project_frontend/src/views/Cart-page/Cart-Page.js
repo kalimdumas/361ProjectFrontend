@@ -1,13 +1,17 @@
 import { Link } from 'react-router-dom'
 import { Box, Card, CardMedia, CardContent, Typography, IconButton, Grid } from '@mui/material';
 import DeleteIcon from '@mui/icons-material/Delete';
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 
 import { Helmet } from 'react-helmet'
 
 import './Cart-Page.css'
+import ProductPrice from '../../components/ProductPrice';
+import { ProductPriceContext } from '../../components/ProductPriceContext';
 
 const CartPage = (props) => {
+
+  const { productsAndSales, addToCart } = useContext(ProductPriceContext)
 
   useEffect(() => {
     if (props.products) { findTotals() }
@@ -18,7 +22,16 @@ const CartPage = (props) => {
   const findTotals = () => {
     var temp = { subtotal: 0, taxes: 0, total: 0 };
     props.products.forEach(product => {
+      if(product.saleId === null){
       temp.subtotal += product.price;
+      } else {
+        var sale = productsAndSales.find(productAndSale => productAndSale.item1.name === product.name).item2;
+        if(sale.isPercentDiscount){
+          temp.subtotal += product.price * (1 - (sale.discount / 100.0));
+        } else {
+          temp.subtotal += product.price - sale.discount;
+        }
+      }
     });
 
     temp.taxes = 0.07 * temp.subtotal;
@@ -50,8 +63,8 @@ const CartPage = (props) => {
                         <Typography gutterBottom variant="h5" component="div">
                           {product.name}
                         </Typography>
-                        <Typography variant="h6" color="text.secondary" sx={{ fontWeight: '700', justifyContent: "space-between" }}>
-                          ${product.price.toFixed(2)}
+                        <Typography variant="h6" color="text.secondary" sx={{ display: 'flex', fontWeight: '700', justifyContent: "space-between" }}>
+                          <ProductPrice product={product} />
                           <IconButton onClick={() => handleRemoveFromCart(product)}>
                             <DeleteIcon />
                           </IconButton>

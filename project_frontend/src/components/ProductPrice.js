@@ -16,7 +16,6 @@ const ProductPrice = (props) => {
         } else {
             return product.price - productAndSale.item2.discount;
         }
-        return 0;
     }
 
     return (
