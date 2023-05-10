@@ -8,8 +8,6 @@ import { ProductPriceContext } from './ProductPriceContext';
 
 export default function DisplayProducts(props) {
 
-    const { productsAndSales, addToCart } = useContext(ProductPriceContext);
-
     return <><Grid container spacing={2}>
         {props.products.map((product, index) => (
             <Grid item key={index}>
@@ -31,7 +29,7 @@ export default function DisplayProducts(props) {
                         <Box sx={{ display: "flex", alignItems: 'center', justifyContent: 'space-between', width: '100%' }}>
                             <Rating name="half-rating-read" defaultValue={product.numStars} precision={0.1} readOnly />
                             <ProductPrice product={product} />
-                            <AddToCartButton addToCart={addToCart} product={product} />
+                            <AddToCartButton product={product} />
                         </Box>
                     </CardActions>
                 </Card>

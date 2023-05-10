@@ -1,21 +1,32 @@
 import { Typography } from "@mui/material";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { ProductPriceContext } from "./ProductPriceContext";
 
 const ProductPrice = (props) => {
 
     const { productsAndSales, addToCart } = useContext(ProductPriceContext);
+    const [ salePrice, setSalePrice ] = useState();
 
     const calculateSalePrice = (product) => {
-        if(productsAndSales.length === 0){
+        if (productsAndSales.length === 0) {
             return;
         }
         const productAndSale = productsAndSales.find(element => element.item1.name === product.name);
-        if (productAndSale.item2.isPercentDiscount) {
-            return product.price * (1 - (productAndSale.item2.discount / 100.0));
-        } else {
-            return product.price - productAndSale.item2.discount;
-        }
+        const price = productAndSale.item1.price;
+        const isPercentDiscount = productAndSale.item2.isPercentDiscount;
+        const discount = productAndSale.item2.discount;
+
+        var url = `http://localhost:5257/apply-sale?price=${price}&isPercentDiscount=${isPercentDiscount}&discount=${discount}`;
+        var requestOptions = {
+            method: 'GET',
+            redirect: 'follow'
+        };
+        fetch(url, requestOptions)
+            .then(response => response.json())
+            .then(result => setSalePrice(result))
+            .catch(error => console.log('error'));
+
+        return salePrice;
     }
 
     return (
