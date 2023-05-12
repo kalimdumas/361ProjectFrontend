@@ -3,6 +3,7 @@ import { useState, useEffect } from 'react';
 import DisplayProducts from '../../components/DisplayProducts';
 
 import './Home-Page.css'
+import { Link } from 'react-router-dom'
 
 const HomePage = (props) => {
   const [products, setProducts] = useState([]);
@@ -18,6 +19,7 @@ const HomePage = (props) => {
       .then(response => productHandler(response))
       .catch(error => console.log('error', error))
   }, [])
+
   return (
     <div className="home-page-container">
       <Helmet>
@@ -52,7 +54,9 @@ const HomePage = (props) => {
             <a href="#FrontProducts" className="home-page-link button">
               Start Shopping
             </a>
-            <button className="home-page-button button">Learn More</button>
+            <Link to="/about" className="">
+              <button className="home-page-button button">Learn More</button>
+            </Link>
           </div>
         </div>
         <img
@@ -71,11 +75,11 @@ const HomePage = (props) => {
           className="home-page-image2"
         />
       </div>
-        <h1 className="home-page-text6">
-          <span>New Arrivals</span>
-          <br></br>
-        </h1>
-        <DisplayProducts addToCart={props.addToCart} products={products} />
+      <h1 className="home-page-text6">
+        <span>New Arrivals</span>
+        <br></br>
+      </h1>
+      <DisplayProducts addToCart={props.addToCart} products={products} />
     </div>
   )
 }

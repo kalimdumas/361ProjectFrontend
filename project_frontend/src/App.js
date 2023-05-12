@@ -26,6 +26,7 @@ import Checkout from './views/Checkout/Checkout'
 import Hats from './views/Hats/Hats'
 import WomenJackets from './views/Women-Jackets/Women-Jackets'
 import { ProductPriceContext } from './components/ProductPriceContext'
+import About from './views/About/About'
 
 const App = () => {
 
@@ -86,6 +87,7 @@ const App = () => {
               <Route element={<Checkout deleteCart={deleteCart} />} path="checkout" />
               <Route element={<Hats />} path="hats" />
               <Route element={<WomenJackets />} path="women-jackets" />
+              <Route element={<About />} path="about" />
             </Route>
           </Routes>
         </ProductPriceContext.Provider>

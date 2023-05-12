@@ -5,7 +5,7 @@ import { ProductPriceContext } from "./ProductPriceContext";
 const ProductPrice = (props) => {
 
     const { productsAndSales, addToCart } = useContext(ProductPriceContext);
-    const [ salePrice, setSalePrice ] = useState();
+    const [salePrice, setSalePrice] = useState();
 
     const calculateSalePrice = (product) => {
         if (productsAndSales.length === 0) {

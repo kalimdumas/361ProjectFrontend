@@ -33,6 +33,7 @@ const CartPage = (props) => {
         }
       }
     });
+
     temp.taxes = 0.07 * temp.subtotal;
     temp.total = temp.subtotal + temp.taxes;
     setTotals(temp);

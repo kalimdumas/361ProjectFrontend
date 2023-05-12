@@ -25,7 +25,7 @@ const MenJackets = (props) => {
         <meta property="og:title" content="Men-Jackets - 361 Project" />
       </Helmet>
       <h1 className="men-jackets-text">
-        <span>Men&apos;s Jackets </span>
+        <span>Men&apos;s Jackets</span>
         <br></br>
       </h1>
       <DisplayProducts addToCart={props.addToCart} products={products} />

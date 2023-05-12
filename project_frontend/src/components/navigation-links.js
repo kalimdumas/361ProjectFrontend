@@ -12,6 +12,7 @@ const NavigationLinks = (props) => {
       <span className="navigation-links-text2">{props.text2}</span>
       <span className="navigation-links-text3">{props.text3}</span>
       <span className="navigation-links-text4">{props.text4}</span>
+      <span className="navigation-links-text4">{props.text5}</span>
     </nav>
   )
 }
@@ -23,6 +24,7 @@ NavigationLinks.defaultProps = {
   rootClassName: '',
   text1: 'Women',
   text4: 'On Sale',
+  text5: 'About',
 }
 
 NavigationLinks.propTypes = {
@@ -32,6 +34,7 @@ NavigationLinks.propTypes = {
   rootClassName: PropTypes.string,
   text1: PropTypes.string,
   text4: PropTypes.string,
+  text5: PropTypes.string,
 }
 
 export default NavigationLinks
