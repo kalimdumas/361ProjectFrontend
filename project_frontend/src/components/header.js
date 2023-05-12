@@ -378,8 +378,6 @@ Header.defaultProps = {
   text3: 'Shirts',
   text8: 'Hats',
   Test1: 'Backpacks',
-  image_src1:
-    'https://presentation-website-assets.teleporthq.io/logos/logo.png',
   text4: 'Pants',
   text7: 'Shorts',
   Test: 'Necklaces',
