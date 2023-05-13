@@ -22,15 +22,15 @@ const LoginPage = (props) => {
 
     fetch(url, requestOptions)
       .then(response => response.json())
-      .then(result => setIsLoggedIn(result))
+      .then(result => {
+        if(result){
+          navigate("/");
+          alert("Login Successful");
+        } else {
+          alert("Invalid credentials. Please try again");
+        }})
       .catch(error => console.log('error'));
 
-    if(isLoggedIn){
-      navigate("/");
-      alert("Login Successful");
-    } else {
-      alert("Invalid credentials. Please try again");
-    }
   }
 
   return (
@@ -44,7 +44,7 @@ const LoginPage = (props) => {
           <input type="text" className="login-page-username input" value={username} onChange={(event) => setUsername(event.target.value)} />
         </label>
         <label>
-          <input type="text" className="login-page-password input" value={password} onChange={(event) => setPassword(event.target.value)} />
+          <input type="password" className="login-page-password input" value={password} onChange={(event) => setPassword(event.target.value)} />
         </label>
         <span className="login-page-text">Username:</span>
         <span className="login-page-text1">Password:</span>
