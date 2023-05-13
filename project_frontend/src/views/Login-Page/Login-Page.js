@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Link, useNavigate} from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 
 import { Helmet } from 'react-helmet'
 
@@ -9,17 +9,29 @@ const LoginPage = (props) => {
 
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
   const navigate = useNavigate();
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    if (username === 'myusername' && password === 'mypassword') {
-      alert('Login successful!');
-      navigate('/');
+    var url = `http://localhost:5257/login?username=${username}&password=${password}`;
+    var requestOptions = {
+      method: 'GET',
+      redirect: 'follow'
+    };
+
+    fetch(url, requestOptions)
+      .then(response => response.json())
+      .then(result => setIsLoggedIn(result))
+      .catch(error => console.log('error'));
+
+    if(isLoggedIn){
+      navigate("/");
+      alert("Login Successful");
     } else {
-      alert('Invalid username or password');
+      alert("Invalid credentials. Please try again");
     }
-  };
+  }
 
   return (
     <div className="login-page-container">
@@ -29,10 +41,10 @@ const LoginPage = (props) => {
       </Helmet>
       <form onSubmit={handleSubmit}>
         <label>
-          <input type="text" className="login-page-username input" value={username} onChange={(event) => setUsername(event.target.value)}/>
+          <input type="text" className="login-page-username input" value={username} onChange={(event) => setUsername(event.target.value)} />
         </label>
         <label>
-          <input type="text" className="login-page-password input" value={password} onChange={(event) => setPassword(event.target.value)}/>
+          <input type="text" className="login-page-password input" value={password} onChange={(event) => setPassword(event.target.value)} />
         </label>
         <span className="login-page-text">Username:</span>
         <span className="login-page-text1">Password:</span>
